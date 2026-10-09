@@ -1,0 +1,74 @@
+[
+  {
+    "n": 1,
+    "id": "2405.03150",
+    "url": "https://arxiv.org/abs/2405.03150",
+    "title": "Video Diffusion Models: A Survey",
+    "date": "2024-11-17",
+    "source": "arxiv"
+  },
+  {
+    "n": 2,
+    "id": "11331-6",
+    "url": "https://link.springer.com/article/10.1007/s10462-025-11331-6",
+    "title": "Video diffusion generation: comprehensive review and open problems",
+    "date": "2025-08-20",
+    "source": "web"
+  },
+  {
+    "n": 3,
+    "id": "2511.21780",
+    "url": "https://arxiv.org/abs/2511.21780",
+    "title": "3MDiT: Unified Tri-Modal Diffusion Transformer for Text-Driven Synchronized Audio-Video Generation",
+    "date": "2025-11-26",
+    "source": "arxiv"
+  },
+  {
+    "n": 4,
+    "id": "d1422213",
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/d1422213c9f2bdd5178b77d166fba86a-Paper-Conference.pdf",
+    "title": "JavisGPT: A Unified Multi-modal LLM",
+    "date": "2025-01-01",
+    "source": "web"
+  },
+  {
+    "n": 5,
+    "id": "2410.19884",
+    "url": "https://arxiv.org/pdf/2410.19884",
+    "title": "A Survey of AI-Generated Video Evaluation",
+    "date": "2024-10-25",
+    "source": "web"
+  },
+  {
+    "n": 6,
+    "id": "2411.13503",
+    "url": "https://huggingface.co/papers/2411.13503",
+    "title": "VBench++: Comprehensive and Versatile Benchmark Suite for Video Generative Models",
+    "date": "2024-11-20",
+    "source": "hf-search"
+  },
+  {
+    "n": 7,
+    "id": "2504.04907",
+    "url": "https://huggingface.co/papers/2504.04907",
+    "title": "Video-Bench: Human-Aligned Video Generation Benchmark",
+    "date": "2025-04-07",
+    "source": "hf-search"
+  },
+  {
+    "n": 8,
+    "id": "01314-3",
+    "url": "https://link.springer.com/article/10.1186/s40537-025-01314-3",
+    "title": "Text-to-video generators: a comprehensive survey",
+    "date": "2025-11-14",
+    "source": "web"
+  },
+  {
+    "n": 9,
+    "id": "2601.17323",
+    "url": "https://huggingface.co/papers/2601.17323",
+    "title": "SkyReels-V3 Technique Report",
+    "date": "2026-01-24",
+    "source": "hf-search"
+  }
+]

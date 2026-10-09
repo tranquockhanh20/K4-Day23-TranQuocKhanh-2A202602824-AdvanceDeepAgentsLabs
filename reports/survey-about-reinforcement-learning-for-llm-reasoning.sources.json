@@ -1,0 +1,74 @@
+[
+  {
+    "n": 1,
+    "id": "2507.04136v1",
+    "url": "https://arxiv.org/abs/2507.04136v1",
+    "title": "A Technical Survey of Reinforcement Learning Techniques for Large Language Models",
+    "date": "2025-07-04",
+    "source": "arxiv"
+  },
+  {
+    "n": 2,
+    "id": "2412.10400v3",
+    "url": "https://arxiv.org/abs/2412.10400v3",
+    "title": "Reinforcement Learning Enhanced LLMs: A Survey",
+    "date": "2024-12-10",
+    "source": "web"
+  },
+  {
+    "n": 3,
+    "id": "2506.01939",
+    "url": "https://huggingface.co/papers/2506.01939",
+    "title": "Beyond the 80/20 Rule: High-Entropy Minority Tokens Drive Effective Reinforcement Learning for LLM Reasoning",
+    "date": "2025-06-02",
+    "source": "hf-search"
+  },
+  {
+    "n": 4,
+    "id": "2110.14168",
+    "url": "https://arxiv.org/abs/2110.14168",
+    "title": "Training Verifiers to Solve Math Word Problems",
+    "date": "2021-10-27",
+    "source": "web"
+  },
+  {
+    "n": 5,
+    "id": "2605.19723",
+    "url": "https://arxiv.org/abs/2605.19723",
+    "title": "Mathematical Reasoning in Large Language Models: Benchmarks, Architectures, Evaluation, and Open Challenges",
+    "date": "2026-07-07",
+    "source": "web"
+  },
+  {
+    "n": 6,
+    "id": "2510.27072v1",
+    "url": "https://arxiv.org/abs/2510.27072v1",
+    "title": "Towards Understanding Self-play for LLM Reasoning",
+    "date": "2025-10-20",
+    "source": "arxiv"
+  },
+  {
+    "n": 7,
+    "id": "acl-anthology-2026-acl-long-1045",
+    "url": "https://aclanthology.org/2026.acl-long.1045.pdf",
+    "title": "A Survey of Reinforcement Learning for Large Language Models under Data Scarcity",
+    "date": "2026-06-01",
+    "source": "web"
+  },
+  {
+    "n": 8,
+    "id": "2602.09305v2",
+    "url": "https://arxiv.org/abs/2602.09305v2",
+    "title": "Reward Modeling for Reinforcement Learning-Based LLM Reasoning: Design, Challenges, and Evaluation",
+    "date": "2026-02-15",
+    "source": "arxiv"
+  },
+  {
+    "n": 9,
+    "id": "the-state-of-llm-reasoning-model-training",
+    "url": "https://magazine.sebastianraschka.com/p/the-state-of-llm-reasoning-model-training",
+    "title": "The State of Reinforcement Learning for LLM Reasoning",
+    "date": "2025-04-19",
+    "source": "web"
+  }
+]

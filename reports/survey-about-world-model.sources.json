@@ -1,0 +1,66 @@
+[
+  {
+    "n": 1,
+    "id": "1803.10122",
+    "url": "https://huggingface.co/papers/1803.10122",
+    "title": "World Models",
+    "date": "2018-01-01",
+    "source": "hf-daily"
+  },
+  {
+    "n": 2,
+    "id": "42465",
+    "url": "https://dl.acm.org/doi/10.1609/aaai.v40i6.42465",
+    "title": "Pre-Trained Video Generative Models as World Simulators",
+    "date": "2026-06-23",
+    "source": "web"
+  },
+  {
+    "n": 3,
+    "id": "2510.19788v2",
+    "url": "https://arxiv.org/abs/2510.19788v2",
+    "title": "Benchmarking World-Model Learning",
+    "date": "2025-10-01",
+    "source": "arxiv"
+  },
+  {
+    "n": 4,
+    "id": "2404.18202",
+    "url": "https://arxiv.org/abs/2404.18202",
+    "title": "WorldGPT: Empowering LLM as Multimodal World Model",
+    "date": "2024-04-30",
+    "source": "arxiv"
+  },
+  {
+    "n": 5,
+    "id": "2607.06401v1",
+    "url": "https://arxiv.org/abs/2607.06401v1",
+    "title": "A Definition and Roadmap for World Models",
+    "date": "2026-07-15",
+    "source": "arxiv"
+  },
+  {
+    "n": 6,
+    "id": "state-of-world-models-2026",
+    "url": "https://world-models.io/reports/state-of-world-models-2026/state-of-world-models-2026-v1.0.pdf",
+    "title": "State of World Models 2026: Taxonomy, Benchmarks and Open Challenges",
+    "date": "2026-01-01",
+    "source": "web"
+  },
+  {
+    "n": 7,
+    "id": "empirical-world-survey",
+    "url": "https://empirical.world/survey/evaluation/",
+    "title": "Evaluating world models — World Models Survey",
+    "date": "2026-01-01",
+    "source": "web"
+  },
+  {
+    "n": 8,
+    "id": "2609.29669",
+    "url": "https://arxiv.org/abs/2609.29669",
+    "title": "Do World Models Make Better Robots? A Survey of Evaluation Benchmarks for Predictive Embodied Intelligence",
+    "date": "2026-09-01",
+    "source": "arxiv"
+  }
+]

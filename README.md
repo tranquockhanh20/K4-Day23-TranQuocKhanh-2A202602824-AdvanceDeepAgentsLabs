@@ -107,3 +107,9 @@ Kết quả nằm ở `reports/survey-about-world-model.md` cùng `.sources.json
 - Mỗi lần chạy tốn token LLM và thời gian sandbox. `tokens` trong `meta.json` chỉ đếm tin nhắn của lead, chưa gồm subagent, nên chi phí thật cao hơn. `open_sandbox()` luôn dừng và xóa sandbox khi kết thúc, kể cả khi lỗi. Đừng bỏ qua nó.
 - **Không đưa bí mật vào sandbox.** Sandbox không ngăn được prompt injection hay việc đẩy dữ liệu ra mạng; một trang web độc hại có thể khiến agent chạy lệnh bên trong sandbox. Vì vậy mọi công cụ gọi mạng và mọi khóa ở lại phía host.
 - Nội dung lấy từ web là **dữ liệu không đáng tin**: agent không được làm theo chỉ dẫn nằm trong đó.
+
+## 8. Cấu hình Google free tier và kiểm lại kết quả
+
+Với Google API key, trong `.env` đặt `LAB_MODEL=google_genai:gemini-3.1-flash-lite` và `GOOGLE_API_KEY=<khóa của bạn>`. Model này hỗ trợ function calling và có free tier theo [tài liệu Google](https://ai.google.dev/gemini-api/docs/pricing); hạn mức request vẫn áp dụng. Máy cần Docker đang chạy khi `SANDBOX=docker`.
+
+Sau khi chạy đủ 5 chủ đề, dùng `python self_check.py`. Nếu muốn chuẩn hóa tiêu đề bài báo từ metadata công khai, chạy `python revalidate_reports.py`: script lấy metadata ở host, cập nhật `sources.json` và tạo lại References **trong sandbox**, chạy validator, rồi tải đúng hai file đã kiểm tra về `reports/`. Thân báo cáo do agent viết không bị sửa. `apply_titles.py` chỉ dùng thư viện chuẩn bên trong sandbox; không có API key nào được tải vào đó.

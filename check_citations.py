@@ -1,10 +1,6 @@
-"""check_citations.py - STUDENT IMPLEMENTS `check`.   Runs INSIDE the sandbox (standard library only).
-
-research.py uploads this file to the sandbox and the lead agent runs it with the `execute` tool:
-    python3 /tmp/work/research/check_citations.py [report.md] [sources.json]
-It must exit 0 and print "OK: ..." when the report is consistent, else print each problem and exit 1.
-"""
+"""Validate report citations against sources.json (standard library only)."""
 import json
+import re
 import sys
 
 REPORT = "/tmp/work/report/report.md"
@@ -12,27 +8,79 @@ SOURCES = "/tmp/work/research/sources.json"
 
 
 def check(report_text, sources):
-    """Return a list of problem strings (empty list = OK).
+    """Return citation and reference consistency problems."""
+    if not isinstance(sources, list) or not sources:
+        return ["no sources in sources.json"]
+    problems = []
+    by_number = {}
+    urls_seen = set()
+    for index, source in enumerate(sources, 1):
+        if not isinstance(source, dict):
+            problems.append(f"source {index} is not an object")
+            continue
+        number, url = source.get("n"), source.get("url")
+        if type(number) is not int:
+            problems.append(f"source {index} has invalid n")
+        elif number in by_number:
+            problems.append(f"duplicate source number [{number}]")
+        else:
+            by_number[number] = source
+        if not isinstance(url, str) or not re.match(r"^https?://", url):
+            problems.append(f"source {index} has invalid URL")
+        elif url in urls_seen:
+            problems.append(f"duplicate URL: {url}")
+        else:
+            urls_seen.add(url)
 
-    PSEUDO-CODE:
-      problems = []
-      if sources is empty: return ["no sources in sources.json"]
-      for each source entry:
-          n must be an int                       -> problem if not
-          url must start with http:// or https://-> problem if not
-          the same url must not appear twice     -> problem if duplicated
-      split report_text at the heading "## References":
-          body = text before it; if the heading is missing -> problem
-      cited = set of numbers found as [n] in the BODY only (not in the reference list; use a regex)
-      every number in `cited` must exist in sources -> problem "[n] cited but missing from sources.json"
-      every source number must be in `cited`        -> problem "source [n] never cited"
-      the lines of the References section that start with "[n]" (regex) are the reference lines:
-          every source needs exactly ONE reference line (none missing, no number twice, no number that is not a source)
-          each reference line holds exactly ONE http(s) URL and it must equal that source's url
-          (a line bundling several sources under one number is a problem)
-      return problems
-    """
-    raise NotImplementedError("TODO: implement check()")
+    parts = re.split(r"(?m)^## References\s*$", report_text, maxsplit=1)
+    if len(parts) != 2:
+        problems.append("missing ## References heading")
+        body, references = report_text, ""
+    else:
+        body, references = parts
+    body = re.sub(r"(?ms)^\s*\x60\x60\x60.*?^\s*\x60\x60\x60[^\n]*$", "", body)
+    body = re.sub(r"\x60[^\x60\n]*\x60", "", body)
+    body = re.sub(r"\[\d+\]\([^)]*\)", "", body)
+    cited = set()
+    for match in re.finditer(r"\[([\d,\s-]+)\]", body):
+        expression = match.group(1).strip()
+        if not re.fullmatch(r"\d+(?:\s*(?:,|-)\s*\d+)*", expression):
+            continue
+        for item in re.split(r"\s*,\s*", expression):
+            range_match = re.fullmatch(r"(\d+)\s*-\s*(\d+)", item)
+            if range_match:
+                first, last = map(int, range_match.groups())
+                cited.update(range(first, last + 1))
+            elif item.isdigit():
+                cited.add(int(item))
+    for number in sorted(cited - by_number.keys()):
+        problems.append(f"[{number}] cited but missing from sources.json")
+    for number in sorted(by_number.keys() - cited):
+        problems.append(f"source [{number}] never cited")
+
+    reference_counts = {}
+    for line in references.splitlines():
+        match = re.match(r"^\[(\d+)\]\s+(.+)$", line)
+        if not match:
+            continue
+        number = int(match.group(1))
+        reference_counts[number] = reference_counts.get(number, 0) + 1
+        urls = re.findall(r"https?://[^\s<>]+", match.group(2))
+        if len(urls) != 1:
+            problems.append(f"reference [{number}] must contain exactly one URL")
+        elif number in by_number and urls[0] != by_number[number].get("url"):
+            problems.append(f"reference [{number}] URL does not match sources.json")
+        if re.search(r";\s+(?:\[\d+\]|https?://)", match.group(2)):
+            problems.append(f"reference [{number}] bundles multiple sources")
+    for number in sorted(by_number):
+        if reference_counts.get(number, 0) != 1:
+            problems.append(f"source [{number}] needs exactly one reference line")
+    for number in sorted(reference_counts.keys() - by_number.keys()):
+        problems.append(f"reference [{number}] missing from sources.json")
+    for number, count in sorted(reference_counts.items()):
+        if count > 1:
+            problems.append(f"duplicate reference [{number}]")
+    return problems
 
 
 def main(argv):
